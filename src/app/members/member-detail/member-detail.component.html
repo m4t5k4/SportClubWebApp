@@ -1,0 +1,5 @@
+<h2>Selected member</h2>
+<dl *ngIf="member">
+    <dt>{{member.name}}</dt>
+    <dd>{{member.dob | date}} {{member.address}}<button (click)="choose(member)">Choose me!</button></dd>
+</dl>
