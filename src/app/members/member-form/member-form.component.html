@@ -1,7 +1,25 @@
-<p>member-form works!</p>
-<!-- <mat-form-field appearance="fill">
-    <mat-label>Choose a date</mat-label>
-    <input matInput [matDatepicker]="picker">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-</mat-form-field> -->
+<div class="container">
+    <form (ngSubmit)="onSubmit()" [formGroup]="memberForm">
+        <div class="row">
+            <mat-form-field>
+                <input matInput type="text" formControlName="name" placeholder="voornaam achternaam">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="fill">
+                <mat-label>date of birth</mat-label>
+                <input matInput ngModel name="date" [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field>
+                <input matInput type="text" formControlName="address" placeholder="address">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </form>
+</div>

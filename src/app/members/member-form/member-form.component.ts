@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-member-form',
@@ -8,14 +8,24 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 })
 export class MemberFormComponent implements OnInit {
   submitted: boolean = false;
-  studentForm = this.fb.group({
-    name: ['voornaam achternaam', Validators.required],
-    dob: ['', [Validators.required, Validators.minLength(2)]]
+  date: string = "";
+  memberForm = this.fb.group({
+    name: ['', Validators.required],
+    dob: ['', Validators.required],
+    address: ['', Validators.required]
   });
   constructor(private fb: FormBuilder) { }
 
   onSubmit () {
     this.submitted = true;
+    console.log(this.memberForm.value);
+    let values = this.memberForm.value;
+    var newMember = {
+      name: values.name,
+      dob: values.dob,
+      address: values.address
+    }
+    
     //Call API (this service doesn't exist, just an example!)
     //this._apiservice.addStudent(this.studentForm.value).subscribe();
   }

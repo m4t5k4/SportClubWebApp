@@ -15,11 +15,11 @@ export class MembersComponent implements OnInit {
   chosenMember: Member = null;
   constructor(private _memberService: MemberService) {
     //this.members = this._memberService.getMembers();
-    // First 2 members
+    // First 5 members
     this.members = this._memberService.getMembers()
       .pipe(
         map(res => {
-          return res.slice(0,2);
+          return res.slice(0,5);
         }),
         tap(t => console.log(t))
       );
@@ -35,7 +35,7 @@ export class MembersComponent implements OnInit {
   }
 
   deleteMember () {
-    this._memberService.deleteMember(2).subscribe();
+    this._memberService.deleteMember(this.selectedMember['memberID']).subscribe();
   }
 
   showDetailMember (m: Member) {

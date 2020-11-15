@@ -6,10 +6,16 @@
 </ul>
 
 <p *ngIf="chosenMember">You have chosen {{chosenMember.name}}</p>
+<app-member-detail *ngIf="selectedMember" [member]="selectedMember" (chooseMember)="onChooseMember($event)">
+</app-member-detail>
 
-<button mat-raised-button color="primary" (click)="addMember()">Add a member</button>
-<button mat-button color="accent" (click)="updateMember()">Update a member</button>
-<button mat-raised-button color="warn" (click)="deleteMember()">Delete a member</button>
+<div class="row">
+    <button mat-raised-button color="primary" (click)="addMember()">Add a member</button>
+    <button mat-button color="accent" (click)="updateMember()">Update a member</button>
+    <button mat-raised-button color="warn" (click)="deleteMember()">Delete a member</button>
+</div>
 
-<app-member-detail *ngIf="selectedMember" [member]="selectedMember" (chooseMember)="onChooseMember($event)"></app-member-detail>
-<app-member-form></app-member-form>
+
+<div class="row">
+    <app-member-form id="form"></app-member-form>
+</div>
